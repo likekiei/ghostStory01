@@ -1,0 +1,33 @@
+﻿@model GhostStory.Models.Post
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout_Manager.cshtml";
+}
+
+<h2 class="text-center"><span class="badge badge-danger">刪除這篇文章</span></h2>
+
+
+<div>
+    <div class=" img-fluid text-center ">
+
+        <img src="~/images/warning_01.png" />
+
+        <div class=" justify-content-lg-center ">
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('確定刪除嗎?!')" />
+                    @Html.ActionLink("取消刪除", "Index", "", new { @class = "btn btn-success" })
+                </div>
+            }
+        </div>
+
+
+    </div>
+
+</div> 

@@ -1,0 +1,104 @@
+﻿@model GhostStory.Models.Member
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Manager.cshtml";
+}
+
+
+
+<div class="container" style="background-color:rgb(255, 255, 255,0.3)">
+
+    <div class=" row">
+
+        <div class="alert alert-dark col-12">
+
+            <h4>
+                <span class="badge badge-dark">
+                    @Html.DisplayNameFor(model => model.Account)
+                    @Html.DisplayFor(model => model.Account)
+                </span>
+            </h4>
+
+        </div>
+
+        <div class="alert alert-dark col-12 text-white text-center" style="background-color: rgb(0, 0, 0,0.2)">
+
+
+
+            <h5>
+                @Html.DisplayNameFor(model => model.Level)
+
+
+                <span class="badge badge-pill badge-light">  @Html.DisplayFor(model => model.Level)</span>
+            </h5>
+            <h5>
+                @Html.DisplayNameFor(model => model.Name)
+
+
+                <span class="badge badge-pill badge-light">@Html.DisplayFor(model => model.Name)</span>
+            </h5>
+
+            <h5>
+                @Html.DisplayNameFor(model => model.Gender)
+
+
+                <span class="badge badge-pill badge-light">  @Html.DisplayFor(model => model.Gender)</span>
+            </h5>
+
+            <h5>
+                @Html.DisplayNameFor(model => model.Phone)
+
+
+                <span class="badge badge-pill badge-light">  @Html.DisplayFor(model => model.Phone)</span>
+            </h5>
+
+
+            <h5>
+                @Html.DisplayNameFor(model => model.Address)
+
+
+                <span class="badge badge-pill badge-light">  @Html.DisplayFor(model => model.Address)</span>
+            </h5>
+
+
+            <h5>
+                @Html.DisplayNameFor(model => model.Email)
+
+
+                <span class="badge badge-pill badge-light">  @Html.DisplayFor(model => model.Email)</span>
+            </h5>
+
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+    <p class="text-center">
+        @Html.ActionLink("修改", "Edit", new { id = Model.MemberID }, new {@class="btn btn-light" }) |
+        @Html.ActionLink("回前頁", "Index",null, new { @class = "btn btn-light" })
+    </p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<GhostStory.Models.Administrators>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Manager.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table table-striped table-dark table-hover">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Account)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Passwd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+
+        @Html.DisplayFor(modelItem => item.Account)
+
+    </td>
+    <td>
+       <span class="badge badge-dark">****************</span>
+</td>
+    <td><h5>
+    @Html.ActionLink("更改密碼", "Edit", new { id = item.Account }, new {@class= "badge badge-dark text-white" })
+    </h5>
+
+</td>
+</tr>
+}
+
+</table>

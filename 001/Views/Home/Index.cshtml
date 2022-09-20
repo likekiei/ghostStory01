@@ -1,0 +1,223 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    if (Session["memberid"] == null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout_Member.cshtml";
+    }
+}
+<link href="~/Content/IndexStyle.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">此主題區文章會員專屬!!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-footer m-auto">
+                @Html.ActionLink("會員登入", "Login", "Member", new { area = "" }, new { @class = "btn btn-dark" })
+
+                @Html.ActionLink("會員註冊", "Register", "Member", new { area = "" }, new { @class = "btn btn-dark" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" class="checkMember" name="name" value="@Session["memberid"]" />
+
+
+<div class="container row">
+
+    <div class="row col-12">
+        <div class="col-3">
+
+            <img src="~/images/U_MO.png" class="img-fluid" />
+
+        </div>
+
+        <div class="col-6">
+
+            <img src="~/images/index_01_01.gif" class="img-fluid" />
+
+        </div>
+
+        <div class="col-2">
+
+            <img src="~/images/logo_08.png" class="img-fluid text001" />
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <div class="row col-12 pt-0 ">
+
+
+        <div class="col-3 index-btn-01">
+
+
+            <div class="col-12  text001 rounded-0  " id="neon-btn">
+
+                <a href="@Url.Action("Themes01", "AllPost")" class="btn one notMember">
+                    @ViewBag.theme01
+                </a>
+
+
+
+            </div>
+
+        </div>
+
+        <div class="col-3 index-btn-02 ">
+
+
+            <div class="col-12  text001 rounded-0 border-0" id="neon-btn">
+
+
+                <a href="@Url.Action("Themes02", "AllPost")" class="btn two notMember">
+                    @ViewBag.theme02
+                </a>
+
+
+
+            </div>
+
+        </div>
+
+        <div class="col-3 index-btn-03 ">
+
+
+            <div class="col-12  text001 rounded-0 border-0" id="neon-btn">
+
+
+                <a href="@Url.Action("Themes04", "AllPost")" class="btn three notMember">
+                    @ViewBag.theme04
+                </a>
+
+
+
+            </div>
+
+        </div>
+
+
+        <div class="col-3 index-btn-04">
+
+
+            <div class="col-12  text001 rounded-0 border-0" id="neon-btn">
+
+
+                <a href="@Url.Action("Themes05", "AllPost")" class="btn four notMember">
+                    @ViewBag.theme05
+                </a>
+
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="row col-12">
+
+        <div class="col-6 index-btn-05 " style="height:200px">
+
+
+            <div class=" text001 rounded-0 border-0 index-btn-05" id="neon-btn">
+
+
+                <a href="@Url.Action("Themes06", "AllPost")" class="btn five ">
+                    @ViewBag.theme06
+                </a>
+
+
+
+            </div>
+
+        </div>
+
+
+
+        <div class="col-6  index-btn-06" style="height:200px">
+
+
+            <div class=" text001 rounded-0 border-0 " id="neon-btn">
+
+
+                <a href="@Url.Action("Themes03", "AllPost")" class="btn six">
+                    @ViewBag.theme03
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="col-12 p-1">
+
+        @Html.Action("_IndexThemes03")
+
+
+    </div>
+
+
+    <br>
+
+    <div class="col-12 p-1 ">
+
+        @Html.Action("_IndexThemes06")
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<script>
+    console.log($('.checkMember').val());
+    if ($('.checkMember').val() == "") {
+        $('.notMember').attr("data-toggle", "modal");
+        $('.notMember').attr("data-target", "#exampleModal");
+        //$('.two').attr("data-toggle", "modal");
+        //$('.two').attr("data-target", "#exampleModal");
+        //$('.three').attr("data-toggle", "modal");
+        //$('.three').attr("data-target", "#exampleModal");
+        //$('.four').attr("data-toggle", "modal");
+        //$('.four').attr("data-target", "#exampleModal");
+    }
+
+
+
+
+
+</script>

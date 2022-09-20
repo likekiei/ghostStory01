@@ -1,0 +1,42 @@
+﻿@model IEnumerable<GhostStory.Models.Themes>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Manager.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-dark table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.themesID)
+        </th>
+        <th>@Html.DisplayNameFor(model => model.Category) </th>
+
+        <th> </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.themesID)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Category)
+    </td>
+
+    <td>
+        @Html.ActionLink("修改", "Edit", new { id = item.themesID }, new {@class= "btn btn-outline-light" }) |
+        @*@Html.ActionLink("Details", "Details", new { id = item.themesID }) |*@
+        @Html.ActionLink("刪除", "Delete", new { id = item.themesID }, new { @class = "btn btn-outline-light" })
+    </td>
+</tr>
+}
+
+</table>

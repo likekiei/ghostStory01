@@ -1,0 +1,233 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<GhostStory.Models.Post>
+
+@{
+    ViewBag.Title = "台灣詭事-主題區:" + @ViewBag.theme06;
+    Layout = "~/Views/Shared/_Layout_Member.cshtml";
+
+}
+
+@{
+
+    if (Session["memberid"] == null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout_Member.cshtml";
+    }
+}
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">此主題區文章會員專屬!!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-footer m-auto">
+                @Html.ActionLink("會員登入", "Login", "Member", new { area = "" }, new { @class = "btn btn-dark" })
+
+                @Html.ActionLink("會員註冊", "Register", "Member", new { area = "" }, new { @class = "btn btn-dark" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" class="checkMember" name="name" value="@Session["memberid"]" />
+
+
+
+
+
+
+
+
+<div>
+
+    <div class="  badge badge-secondary ">
+        <h3>
+            <span class="badge badge-dark ">目前主題區:</span>
+            <span class="badge badge-info" style="background-color:#1e3686; color:#ffffff">
+                @ViewBag.theme06
+
+
+            </span>
+        </h3>
+    </div>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+
+    @using (Html.BeginForm())
+    {
+        <div class="input-group mb-3">
+
+
+            <div class="input-group-prepend">
+                <input class="btn btn-outline-light" type="submit" value="搜尋文章標題" />
+            </div>
+            @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+        </div>
+
+    }
+
+    <h5>
+        <span class="badge badge-light"> 目前列表:@ViewBag.theme06  </span>
+        <span class="badge badge-danger">@ViewBag.err</span>
+        <a class="badge badge-pill badge-dark btn btn-outline-primary notMember" href="/AllPost/">全部文章</a>
+        <a class="badge badge-pill badge-dark btn btn-outline-primary notMember" href="/AllPost/Themes01">@ViewBag.theme01</a>
+        <a class="badge badge-pill badge-dark btn btn-outline-primary notMember" href="/AllPost/Themes02">@ViewBag.theme02</a>
+        <a class="badge badge-pill badge-dark btn btn-outline-primary" href="/AllPost/Themes03">@ViewBag.theme03</a>
+        <a class="badge badge-pill badge-dark btn btn-outline-primary notMember" href="/AllPost/Themes04">@ViewBag.theme04</a>
+        <a class="badge badge-pill badge-dark btn btn-outline-primary notMember" href="/AllPost/Themes05">@ViewBag.theme05</a>
+        <a class="badge badge-pill badge-light btn btn-warning" href="/AllPost/Themes06">@ViewBag.theme06</a>
+    </h5>
+
+
+</div>
+
+
+
+
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+
+
+
+<table class="table table-dark table-hover">
+
+
+
+    <tr>
+        <th>
+            <h5>
+                <span class="badge badge-secondary">主題</span>
+            </h5>
+        </th>
+
+        <th>
+            <h5>
+                <span class="badge badge-secondary">文章標題</span>
+            </h5>
+        </th>
+        <th>
+            <h5>
+                <span class="badge badge-secondary  float-right">作者</span>
+            </h5>
+        </th>
+        <th>
+            <h5>
+                <span class="badge badge-success  float-right"> 附圖?!</span>
+            </h5>
+        </th>
+        <th>
+            <h5>
+                <span class="badge badge-secondary float-right ">發表時間</span>
+            </h5>
+        </th>
+
+        @*<th></th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Theme.Category)
+
+            </td>
+            <td>
+                <span class="d-inline-block text-truncate border-bottom border-danger" style="max-width: 270px;">
+                    <a style="text-decoration:none;" class=" btn-outline-light  border-0" href="/AllPost/Details/@item.PostID "> @Html.DisplayFor(modelItem => item.Title)</a>
+
+
+
+                </span>
+            </td>
+            <td>
+                <span class="float-right">  @Html.DisplayFor(modelItem => item.Account)</span>
+            </td>
+
+            <td>
+                <div class="float-right">
+                    @{
+
+
+                        if (item.PostPhoto01 != null || item.PostPhoto02 != null || item.PostPhoto03 != null)
+                        {
+
+                            <div class="img-fluid">
+                                <img src="~/images/yes_01.png" />
+                            </div>
+
+                        }
+                        else
+                        {
+
+                            <div class="img-fluid">
+                                <img src="~/images/no_01.png" />
+                            </div>
+
+
+                        };
+
+
+                    }
+                </div>
+            </td>
+
+            <td>
+                <span class="float-right"> @Html.DisplayFor(modelItem => item.Publishtime)</span>
+            </td>
+
+
+
+            <!--<td>-->
+            @*@Html.ActionLink("詳閱", "Details", new { id = item.PostID })*@
+
+            <!--</td>-->
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Themes06", new { page, currentFilter = ViewBag.CurrentFilter }))
+
+
+
+<script>
+
+
+    $('.pagination-container>ul').removeClass().addClass("pagination justify-content-end");
+    $('.pagination-container>ul>li').removeClass().addClass("page-item");
+    $('.pagination-container a').removeClass().addClass("page-link  bg-dark text-white");
+
+    console.log($('.checkMember').val());
+    if ($('.checkMember').val() == "") {
+        $('.notMember').attr("data-toggle", "modal");
+        $('.notMember').attr("data-target", "#exampleModal");
+    }
+
+
+
+
+
+</script>

@@ -1,0 +1,295 @@
+﻿@model GhostStory.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+    //Layout = "~/Views/Shared/_Layout_Member.cshtml";
+
+
+    if (Session["memberid"] == null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout_Member.cshtml";
+    }
+}
+
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+<div class="container">
+
+    <div class="p-3">
+        <dlv class="card border-white  " style="background-color:rgb(255, 255, 255,0.7);">
+            <div class="card-header bg-dark text-white">
+
+
+
+                <h3>
+                    <span class="badge badge-light float-left"> @Html.DisplayFor(model => model.Title)</span>
+
+                </h3>
+                <span class="float-right">
+                    主題區塊  @Html.DisplayFor(model => model.Theme.Category)
+
+                </span>
+
+
+
+
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <h5>
+                                作者: @Html.DisplayFor(model => model.Account)
+                                <span class="float-right"> 發表時間 @Html.DisplayFor(model => model.Publishtime) </span>
+                            </h5>
+
+                        </div>
+                        <div class="badge badge-secondary"> 文章內容 </div>
+                        @*@Html.DisplayFor(model => model.Content)*@
+                        <div class="bg-white rounded p-2 ">
+                            <h3> @Html.Raw(@Model.Content.ToString().Replace("\n", "<br/>"))   </h3>
+                        </div>
+
+                        <div class="bg-dark d-flex justify-content-center rounded">
+                            <h6>
+                                <span class="badge bg-dark text-white"> 故事地點: @Html.DisplayFor(model => model.location)    <span class="text-center p-2">  <a href="https://www.google.com.tw/maps/search/ @Html.DisplayFor(model => model.location)" target="_blank" class="btn btn-outline-success btn-sm">  Google地圖  </a>    </span></span>
+                            </h6>
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+                    <div class=" row-cols-md-3 ">
+                        @{
+                            var photo01 = Model.PostPhoto01 == null ? "Not_Photo_01.png" : Model.PostPhoto01;
+                            var photo02 = Model.PostPhoto02 == null ? "Not_Photo_02.png" : Model.PostPhoto02;
+                            var photo03 = Model.PostPhoto03 == null ? "Not_Photo_03.png" : Model.PostPhoto03;
+                        }
+
+                        <img src="~/images/Postphoto/@photo01" class="img-fluid border-0 float-left" style=" background-color:rgb(255, 255, 255,0)" />
+                        <img src="~/images/Postphoto/@photo02" class="img-fluid border-0 float-left" style=" background-color: rgb(255, 255, 255,0) " />
+                        <img src="~/images/Postphoto/@photo03" class="img-fluid border-0 float-left" style=" background-color: rgb(255, 255, 255,0) " />
+
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </dlv>
+    </div>
+</div>
+
+<div>
+
+
+    @{
+
+
+
+        if (Session["memberid"] != null)
+        {
+
+            <div class="row d-flex justify-content-center">
+
+
+                <h5>
+                    <span class="badge badge-dark" style="background-color:darkseagreen;color:blue;">
+                        已評分人數 <span class="badge badge-light">@Html.Raw(ViewBag.likeCount)</span>
+
+                    </span>
+                </h5>
+
+
+
+
+                <input class="Fraction" type="hidden" name="name" value="@ViewBag.Fraction" />
+
+                <a id="score1" title="1" class="score1 text-center" style="text-decoration:none;" value="1" href="@Url.Action("Score", "Scores", new { PostID = Model.PostID, MemberID = Session["memberid"], Fraction = "1" })">
+
+                    <h5>
+                        <span class="badge badge-dark  btn btn-outline-light">
+                            完全不恐怖!! <span class="badge badge-light">@ViewBag.Score01</span>
+                        </span>
+                    </h5>
+                </a>
+
+                <a id="score2" title="2" class="score2" style="text-decoration:none;" value="2" href="@Url.Action("Score", "Scores", new { PostID = Model.PostID, MemberID = Session["memberid"], Fraction = "2" })">
+
+                    <h5>
+                        <span class="badge badge-dark  btn btn-outline-light">
+                            有點相信!! <span class="badge badge-light">@ViewBag.Score02</span>
+                        </span>
+                    </h5>
+
+
+
+                </a>
+                <a id="score3" title="3" class="score3" style="text-decoration:none;" href="@Url.Action("Score", "Scores", new { PostID = Model.PostID, MemberID = Session["memberid"], Fraction = "3" })">
+
+                    <h5>
+                        <span class="badge badge-dark  btn btn-outline-light">
+                            有點恐怖~!<span class="badge badge-light">@ViewBag.Score03</span>
+                        </span>
+
+                    </h5>
+
+                </a>
+                <a id="score4" title="4" class="score4" style="text-decoration:none;" value="4" href="@Url.Action("Score", "Scores", new { PostID = Model.PostID, MemberID = Session["memberid"], Fraction = "4" })">
+
+                    <h5>
+                        <span class="badge badge-dark  btn btn-outline-light">
+                            恐怖!後悔看了這內容!!<span class="badge badge-light">@ViewBag.Score04</span>
+                        </span>
+                    </h5>
+
+
+                </a>
+                <a id="score5" title="5" class="score5" style="text-decoration:none;" value="5" href="@Url.Action("Score", "Scores", new { PostID = Model.PostID, MemberID = Session["memberid"], Fraction = "5" })">
+
+                    <h5>
+                        <span class="badge badge-dark  btn btn-outline-light">
+                            完了!今天不用睡了…!<span class="badge badge-light">@ViewBag.Score05</span>
+                        </span>
+                    </h5>
+
+                </a>
+
+                <h5>
+                    <span class="badge badge-pill badge-secondary">  @ViewBag.Score</span>
+                </h5>
+
+
+            </div>
+
+        }
+        else
+
+        {
+            <h5 class="text-center">
+                <span class="badge badge-pill badge-secondary btn-dark text-center">
+                    @Html.ActionLink("評分文章請登入會員", "Login", "Member", null, new { @class = "text-white " })
+                </span>
+                </h5 >
+        }
+
+
+
+
+}
+
+
+
+
+
+</div>
+
+
+
+<p>
+
+    @{ if (Session["memberid"] == null)
+
+
+        {
+            <input type="button" name="back" value="返回" onClick="javascript:history.back()" class="btn btn-success">
+
+            @Html.ActionLink("回首頁", "Index", "Home", null, new { @class = "btn btn-success" })
+        }
+        else
+        {
+            <input type="button" name="back" value="返回" onClick="javascript:history.back()" class="btn btn-success">
+            @Html.ActionLink("回會員首頁", "Index", null, new { @class = "btn btn-light" })
+        };
+
+
+
+    }
+
+
+
+
+
+    @*<input type="button" name="back" value="返回" onClick="javascript:history.back()" class="btn btn-success">*@
+
+
+
+
+
+
+
+
+
+</p>
+
+@section scripts{
+    <script>
+
+        var score1 = $('.score1').attr("title");
+        var score2 = $('.score2').attr("title");
+        var score3 = $('.score3').attr("title");
+        var score4 = $('.score4').attr("title");
+        var score5 = $('.score5').attr("title");
+        var Fraction = $('.Fraction').val();
+        console.log($('.score3').attr("title"));
+
+        console.log(Fraction);
+        if (score1 === Fraction) { $('.score1').addClass("badge  badge-info") }
+        if (score2 === Fraction) { $('.score2').addClass("badge  badge-secondary") }
+        if (score3 === Fraction) { $('.score3').addClass("badge  badge-primary") }
+        if (score4 === Fraction) { $('.score4').addClass("badge  badge-warning") }
+        if (score5 === Fraction) { $('.score5').addClass("badge  badge-danger") }
+
+
+
+    </script>
+}

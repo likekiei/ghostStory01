@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Ghost Story 會員</title>
+
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
+    <link href="~/Content/MemberStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="navbar navbar-expand-lg navbar-dark mb-3 ">
+                @*@Html.ActionLink("Ghost Story", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                <a href="/"> <img src="~/images/logo_07.png" class="img-fluid" style="height:45px;width:auto;" /> </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MynavbarMenu">
+                    <span class="navbar-toggler-icon bg-light"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="MynavbarMenu">
+
+                    <div class="navbar-nav">
+
+
+
+                        @*@Html.ActionLink("首頁", "Index", "Home", new { area = "" }, new { @class = "btn btn-secondary" })*@
+                        @Html.ActionLink("會員首頁", "Index", "AllPost", new { area = "" }, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("會員聊天討論區", "Index", "MemberDiscusses", new { area = "" }, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("貼文管理", "Index", "MemberPosts", new { area = "" }, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("個人資料修改", "Edit", "Member", new { area = "" }, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("個人密碼變更", "ChangePassWord", "Member", new { area = "" }, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("會員登出", "Logout", "Member", new { area = "" }, new { @class = "btn btn-secondary" })
+
+                        <h4>
+                            <span class="badge badge-light ml-1 align-middle"> 帳號: @Session["memberuser"] 登入中</span>
+                        </h4>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container">
+
+
+        @RenderBody()
+
+    </section>
+    <br>
+    <br>
+    <br>
+    <div class=" mb-0 text-center fixed-bottom">
+
+        <img src="~/images/bb_02.png" class="img-fluid" />
+    </div>
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>

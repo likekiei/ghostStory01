@@ -1,0 +1,104 @@
+﻿@model GhostStory.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Member.cshtml";
+}
+
+
+
+<div class="container">
+
+    <div class="p-3">
+        <dlv class="card border-white  " style="background-color:rgb(255, 255, 255,0.7);">
+            <div class="card-header bg-dark text-white">
+                @Html.DisplayFor(model => model.Title)
+                <div class="float-right"> 主題區塊 <span class=" badge-dark"> @Html.DisplayFor(model => model.Theme.Category)</span></div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <h5>
+                                帳號: @Html.DisplayFor(model => model.Account)
+                                <span class="float-right"> @Html.DisplayFor(model => model.Publishtime) </span>
+                            </h5>
+
+                        </div>
+                        <div class="badge badge-secondary"> 文章內容 </div>
+                        <div class="bg-white rounded">   @*@Html.DisplayFor(model => model.Content)*@ 
+                        
+                        @Html.Raw(@Model.Content.ToString().Replace("\n", "<br/>"))
+                        </div>
+
+                        <div class="bg-dark d-flex justify-content-center rounded">
+                            <h6>
+                                <span class="badge bg-dark text-white"> 故事地點: @Html.DisplayFor(model => model.location)    <span class="text-center p-2">  <a href="https://www.google.com.tw/maps/search/ @Html.DisplayFor(model => model.location)" target="_blank" class="btn btn-outline-success btn-sm">  Google地圖  </a>    </span></span>
+                            </h6>
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <div class=" row-cols-md-3  ">
+                        @{
+                            var photo01 = Model.PostPhoto01 == null ? "Not_Photo_01.png" : Model.PostPhoto01;
+                            var photo02 = Model.PostPhoto02 == null ? "Not_Photo_02.png" : Model.PostPhoto02;
+                            var photo03 = Model.PostPhoto03 == null ? "Not_Photo_03.png" : Model.PostPhoto03;
+                        }
+
+                        <img src="~/images/Postphoto/@photo01" class="img-fluid border-0 float-left" style=" background-color:rgb(255, 255, 255,0)" />
+                        <img src="~/images/Postphoto/@photo02" class="img-fluid border-0 float-left" style=" background-color: rgb(255, 255, 255,0) " />
+                        <img src="~/images/Postphoto/@photo03" class="img-fluid border-0 float-left" style=" background-color: rgb(255, 255, 255,0) " />
+
+
+
+                    </div>
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </dlv>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("修改", "Edit", new { id = Model.PostID }, new { @class = "btn btn-outline-light" }) |
+   
+    
+
+    @Html.ActionLink("回前頁", "Index","", new { @class="btn btn-success" })
+</p>

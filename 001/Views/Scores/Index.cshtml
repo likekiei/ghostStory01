@@ -1,0 +1,56 @@
+﻿@model IEnumerable<GhostStory.Models.Score>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Manager.cshtml";
+}
+
+<h5 > <span class="badge badge-dark">會員評分文章列表</span></h5>
+
+
+<table class="table table-striped table-dark table-hover">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Members.Level)*@
+            評分會員
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Posts.Account)
+            (文章作者)
+
+        </th>
+        <th>
+            文章標題
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fraction)
+        </th>
+        @*<th></th>*@
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Members.Account)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Posts.Account)
+    </td>
+    <td>
+        <span class="d-inline-block text-truncate" style="max-width: 150px;">
+            @Html.DisplayFor(modelItem => item.Posts.Title)
+        </span>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fraction)
+    </td>
+    @*<td>
+        @Html.ActionLink("Edit", "Edit", new {  id=item.PostID  }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>*@
+</tr>
+}
+
+</table>

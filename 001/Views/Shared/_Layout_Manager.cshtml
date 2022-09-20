@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Ghost Story 後台管理</title>
+
+    
+    
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="~/Scripts/modernizr-2.8.3.js"></script>
+        @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
+          <link href="~/Content/MyStyle.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="navbar navbar-expand-lg navbar-dark mb-3">
+                <a href="/"> <img src="~/images/logo_07.png" class="img-fluid" style="height:45px;width:auto;" /> </a>
+                @*@Html.ActionLink("Ghost Story", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MynavbarMenu">
+                    <span class="navbar-toggler-icon bg-light"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="MynavbarMenu">
+
+                    <div class="navbar-nav ">
+
+                        @Html.ActionLink("後台管理首頁", "Index", "HomeManager", new { area = "" }, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("管理者", "Index", "Administrators", new { area = "" }, new { @class = "btn btn-secondary" })
+                        @*@Html.ActionLink("聊天室管理", "Index", "Discusses", new { area = "" }, new { @class = "btn btn-secondary" })*@
+                        @Html.ActionLink("會員管理", "Index", "Members", new { area = "" }, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("貼文管理", "Index", "Posts", new { area = "" }, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("文章評分明細", "Index", "Scores", new { area = "" }, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("文章主題管理", "Index", "Themes", new { area = "" }, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("登出", "Logout", "HomeManager", new { area = "" }, new { @class = "btn btn-secondary" })
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <section class="container">
+            <div ><h3><span class="badge badge-dark">目前是管理員身分登入！</span></h3></div>
+
+
+            @RenderBody()
+
+        </section>
+
+
+    <br>
+    <hr>
+        <footer class="bg-dark mt-5 fixed-bottom">
+            <p class="text-white text-center pt-2 pb-2 mb-0">&copy; @DateTime.Now.Year - Ghost Story</p>
+        </footer>
+
+
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        @RenderSection("script", false)
+</body>
+</html>

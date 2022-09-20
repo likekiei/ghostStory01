@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Manager.cshtml";
+}
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-4">
+            <div class="card" style="background-color:rgb(255, 255, 255,0.3)">
+                @*<img src="..." class="card-img-top" >*@
+                <div class="card-body ">
+                    <h6 class="alert alert-info text-center">會員資訊</h6>
+                    <h5> <span class="badge badge-pill badge-info col-12">  <span> 目前會員總人數:  <span class="badge badge-light"> @ViewBag.memberCount</span>   </span> </span> </h5>
+                    <h5> <span class="badge badge-pill badge-dark col-12">  <span> 會員等級[ A ]:  <span class="badge badge-light"> @ViewBag.memberACount</span>   </span> </span> </h5>
+                    <h5> <span class="badge badge-pill badge-dark col-12">  <span> 會員等級[ B ]:  <span class="badge badge-light"> @ViewBag.memberBCount</span>   </span> </span> </h5>
+                    <h5> <span class="badge badge-pill badge-dark col-12">  <span> 會員等級[ C ]:  <span class="badge badge-light"> @ViewBag.memberCCount</span>   </span> </span> </h5>
+                    <h5> <span class="badge badge-pill badge-dark col-12">  <span> 會員等級[ D ]:  <span class="badge badge-light"> @ViewBag.memberDCount</span>   </span> </span> </h5>
+                    <h5> <span class="badge badge-pill badge-dark col-12">  <span> 會員等級[ E ]:  <span class="badge badge-light"> @ViewBag.memberECount</span>   </span> </span> </h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card" style="background-color:rgb(255, 255, 255,0.3)">
+                @*<img src="..." class="card-img-top" >*@
+                <div class="card-body ">
+                    <h6 class="alert alert-warning text-center">文章統計</h6>
+                    <h5> <span class="badge badge-pill badge-warning col-12">  <span> 目前文章總數:  <span class="badge badge-light">@ViewBag.postCount</span>   </span> </span> </h5>
+                    <h5> <span class="badge badge-pill badge-dark col-12">  <span> @ViewBag.theme01  <span class="badge badge-light">@ViewBag.postACount</span>   </span> </span> </h5>
+                    <h5> <span class="badge badge-pill badge-dark col-12">  <span> @ViewBag.theme02 <span class="badge badge-light"> @ViewBag.postBCount</span>   </span> </span> </h5>
+                    <h5> <span class="badge badge-pill badge-dark col-12">  <span> @ViewBag.theme03  <span class="badge badge-light">@ViewBag.postCCount</span>   </span> </span> </h5>
+                    <h5> <span class="badge badge-pill badge-dark col-12">  <span> @ViewBag.theme04  <span class="badge badge-light">@ViewBag.postDCount</span>   </span> </span> </h5>
+                    <h5> <span class="badge badge-pill badge-dark col-12">  <span> @ViewBag.theme05  <span class="badge badge-light">@ViewBag.postECount</span>   </span> </span> </h5>
+                    <h5> <span class="badge badge-pill badge-dark col-12">  <span> @ViewBag.theme06  <span class="badge badge-light">@ViewBag.postFCount</span>   </span> </span> </h5>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+    @*<div class="rounded d-flex flex-row bd-highlight mb-3" style="background-color:rgb(255, 255, 255,0.4)">
+
+        <h4 class="p-2 bd-highlight">  <span class="badge badge-info"> 目前本站會員人數:  <span class="badge badge-light"> @ViewBag.memberCount</span>   </span> </h4>
+
+        <h4 class="p-2 bd-highlight ">  <span class="badge" style="background-color: rgb(171, 154, 255); "> 目前文章總數:  <span class="badge badge-light"> @ViewBag.postCount</span>   </span> </h4>
+
+    </div>*@
+
+
+
+
+
+
+
+
+</div>

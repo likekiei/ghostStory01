@@ -1,0 +1,43 @@
+﻿@model GhostStory.Models.Score
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Manager.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Score</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Members.Level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Members.Level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Posts.Account)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Posts.Account)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fraction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fraction)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

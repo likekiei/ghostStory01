@@ -1,0 +1,91 @@
+﻿@model GhostStory.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Theme.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Theme.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Publishtime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Publishtime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostPhoto01)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostPhoto01)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostPhoto02)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostPhoto02)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostPhoto03)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostPhoto03)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

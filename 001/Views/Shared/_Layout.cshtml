@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Ghost Story</title>
+
+
+    @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="navbar navbar-expand-lg  mb-3 navbar-light d-flex justify-content-end">
+            @*@Html.ActionLink("Ghost Story", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+
+
+            <div class="navbar-header ">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MynavbarMenu">
+                    <span class="navbar-toggler-icon bg-light"></span>
+                </button>
+
+
+
+                <div class="collapse navbar-collapse " id="MynavbarMenu">
+                    <div class="navbar-nav ">
+
+                        <a href="/"> <img src="~/images/logo_07.png" class="img-fluid" style="height:45px;width:auto;" /> </a>
+
+                        @*@Html.ActionLink("Ghost Story", "Index", "Home", new { area = "" }, new { @class = "nav-link text-white" })*@
+
+
+
+                        @Html.ActionLink("會員註冊", "Register", "Member", new { area = "" }, new { @class = "nav-link text-white " })
+
+
+                        @Html.ActionLink("會員登入", "Login", "Member", new { area = "" }, new { @class = "nav-link text-white " })
+
+
+
+                        @Html.ActionLink("管理者登入", "Login", "HomeManager", new { area = "" }, new { @class = "nav-link text-white " })
+
+
+
+
+
+
+                    </div>
+
+
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+
+        <section class="container">
+            @RenderBody()
+
+
+
+
+
+
+
+        </section>
+
+        <br> <br> <br>
+        <br>
+        <br>
+        <br>
+        <div class=" fixed-bottom text-center">
+
+            <img src="~/images/bb_01.png" class="img-fluid" />
+        </div>
+
+
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+        @RenderSection("scripts", false)
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@model GhostStory.Models.VMHomeManagerLogin
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="container01 border-0 rounded shadow">
+        <div class="form-horizontal">
+            <h5 class="text-white ">管理者登入</h5>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <h6 class="text-white "> 管理者帳號</h6>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control-lg" } })
+                    @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Passwd, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <h6 class="text-white "> 管理者密碼</h6>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Passwd, new { htmlAttributes = new { @class = "form-control-lg" } })
+                    @Html.ValidationMessageFor(model => model.Passwd, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @ViewBag.Errmsg01
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="管理者登入" class="btn btn-outline-light" />
+                </div>
+            </div>
+            <h5 class="text-center">
+                @Html.ActionLink("回首頁", "Index", "", new { @class = "badge badge-pill badge-light" })
+            </h5>
+
+        </div>
+
+    </div>
+}
+
+

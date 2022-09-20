@@ -1,0 +1,178 @@
+﻿body {
+    background-image: url('../images/bg_3.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+/*按鈕圖片*/
+
+.index-btn-01 {
+  
+    background-image: url('../images/index_btn_001.png');
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 300px;
+}
+
+
+
+.index-btn-02 {
+    background-image: url('../images/index_btn_002.png');
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 300px;
+}
+
+
+.index-btn-03{
+    background-image: url('../images/index_btn_003.png');
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 300px;
+}
+
+.index-btn-04 {
+    background-image: url('../images/index_btn_004.png');`Z
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 300px;
+}
+
+.index-btn-05 {
+    background-image: url('../images/index_btn_005.png');
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 200px;
+/*    height: 100%;*/
+}
+
+
+.index-btn-06 {
+    background-image: url('../images/index_btn_006.png');
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 200px;
+    /*    height: 100%;*/
+}
+
+
+
+
+
+
+
+/*正中間*/
+.text001 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.text002 {
+   
+    top: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/*首頁按鈕光暈*/
+
+#neon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+   
+}
+
+.btn {
+    border: 1px solid;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 10px 20px;
+ 
+}
+
+.one {
+   /* color: #4cc9f0;*/
+    color: white;
+}
+
+.two {
+    color: white;
+}
+
+.three {
+    color: white;
+}
+
+.four {
+    color: white;
+}
+
+.five {
+    color: white;
+}
+
+.six {
+    color: white;
+}
+
+
+.btn:hover {
+    color: white;
+    border: 0;
+}
+
+.one:hover {
+    color: brown;
+    background-color: #acff8f;
+    -webkit-box-shadow: 10px 10px 99px 6px rgba(206,255,185,1);
+    -moz-box-shadow: 10px 10px 99px 6px rgba(206,255,185,1);
+    box-shadow: 10px 10px 99px 6px rgba(206,255,185,1);
+}
+
+.two:hover {
+    color: #98f9ff;
+    background-color: #6f0909;
+    -webkit-box-shadow: 10px 10px 99px 6px rgb(165, 11, 11, 1);
+    -moz-box-shadow: 10px 10px 99px 6px rgba(165, 11, 11, 1);
+    box-shadow: 10px 10px 99px 6px rgba(165, 11, 11, 1);
+}
+
+.three:hover {
+    color: #8ffafb;
+    background-color: #06042e;
+    -webkit-box-shadow: 10px 10px 99px 6px rgb(33, 34, 153, 1);
+    -moz-box-shadow: 10px 10px 99px 6px rgba(33, 34, 153, 1);
+    box-shadow: 10px 10px 99px 6px rgba(33, 34, 153, 1);
+}
+
+
+.four:hover {
+    color: #6d0b0b;
+    background-color: #03cfe2;
+    -webkit-box-shadow: 10px 10px 99px 6px rgb(41, 204, 229, 1);
+    -moz-box-shadow: 10px 10px 99px 6px rgba(41, 204, 229, 1);
+    box-shadow: 10px 10px 99px 6px rgba(41, 204, 229, 1);
+}
+
+.five:hover {
+    color: white;
+    background-color: #1b2050;
+    -webkit-box-shadow: 10px 10px 99px 6px rgb(51, 50, 129,1);
+    -moz-box-shadow: 10px 10px 99px 6px rgba(51, 50, 129,1);
+    box-shadow: 10px 10px 99px 6px rgba(51, 50, 129,1);
+}
+
+.six:hover {
+    color: #000000;
+    background-color: #7a90e7;
+    -webkit-box-shadow: 10px 10px 99px 6px rgb(111, 194, 251,1);
+    -moz-box-shadow: 10px 10px 99px 6px rgba(111, 194, 251,1);
+    box-shadow: 10px 10px 99px 6px rgba(111, 194, 251,1);
+}

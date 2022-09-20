@@ -1,0 +1,102 @@
+﻿@model IEnumerable<GhostStory.Models.Post>
+
+
+@{
+
+    Layout = "";
+
+}
+
+<link href="~/Content/IndexStyle.css" rel="stylesheet" />
+
+
+
+
+<div class="rounded-top text-center" style="background-color:rgb(172, 255, 254,0.5)">
+
+    <span class="rounded-top p-1 mb-0" style="background-color:rgb(255, 255, 255,0.7)">
+        真實故事區 最新文章
+    </span>
+
+</div>
+
+
+<table class="table  table-hover ">
+
+
+
+    <tr>
+
+
+
+        @*<th>
+                <h5>
+                    <span class="badge badge-secondary">主題</span>
+                </h5>
+            </th>
+
+            <th>
+                <h5>
+                    <span class="badge badge-secondary">文章標題</span>
+                </h5>
+            </th>
+            <th>
+                <h5>
+                    <span class="badge badge-secondary  float-right">作者</span>
+                </h5>
+            </th>
+            <th>
+                <h5>
+                    <span class="badge badge-success  float-right"> 附圖?!</span>
+                </h5>
+            </th>
+            <th>
+                <h5>
+                    <span class="badge badge-secondary float-right ">發表時間</span>
+                </h5>
+            </th>*@
+
+
+    </tr>
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr class="text-center" style="background-color:rgb(128, 128, 128,0.4)">
+
+
+            <td class="text-white ">
+                <span class="float-left"> @Html.DisplayFor(modelItem => item.Theme.Category)</span>
+            </td>
+
+            <td>
+                <span class="d-inline-block  border-bottom border-danger text-truncate" style="width: 250px;">
+                    <a style="text-decoration:none;" class=" btn-outline-light border-0 " href="/AllPost/Details/@item.PostID "> @Html.DisplayFor(modelItem => item.Title)</a>
+
+
+
+                </span>
+            </td>
+
+
+
+
+
+            <td class="text-white">
+                <span class="float-right"> @Html.DisplayFor(modelItem => item.Publishtime)</span>
+            </td>
+
+
+
+        </tr>
+    }
+
+
+
+</table>
+
+<span class="float-right badge badge-light btn-light">
+    <a href="@Url.Action("Themes03", "AllPost")">    查看更多....</a>
+</span>
+<br>

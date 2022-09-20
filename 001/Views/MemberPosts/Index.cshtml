@@ -1,0 +1,187 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@*@model IPagedList<GhostStory.Models.Post>*@
+@model PagedList.IPagedList<GhostStory.Models.Post>
+
+@*@model IEnumerable<GhostStory.Models.Post>*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Member.cshtml";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link href="~/Content/MemberPostsStyle.css" rel="stylesheet" />
+
+<h4>
+    <span class="badge badge-pill badge-light">會員貼文管理</span>
+</h4>
+
+<div class="row ">
+
+    <div class="col-2 text-center">  @Html.ActionLink("新增貼文", "Create", "", new { @class = "btn btn-outline-light" })</div>
+
+
+  
+    <div class="alert col-9 text-center c001 border-0 "> @Session["memberuser"] 會員您好,目前的貼文數量 總計:  <span class="badge badge-light">@ViewBag.MemberPosrCount </span>篇  會員等級:<span class="badge badge-light"> @ViewBag.memberLevel</span> 距下一等級再發表:<span class="badge badge-light"> @ViewBag.postCount </span>篇文章喔~</div>
+
+</div>
+
+
+
+
+<div class="container">
+
+    @using (Html.BeginForm("Index", "MemberPosts", FormMethod.Get))
+    {
+
+    <div class="input-group mb-3 ">
+ 
+     
+
+        <div class="input-group-prepend">
+            <input class="btn btn-outline-light" type="submit" value="搜尋文章標題" />
+        </div>
+
+        @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+
+        <span class="bg-danger rounded-right text-center text-white">@ViewBag.err</span>
+    </div>
+
+    }
+
+
+
+
+
+    <table class=" table table-striped table-dark table-hover ">
+
+        <tr>
+            <th>
+                <h5>
+                    <span class="badge badge-dark">主題區塊</span>
+                </h5>
+            </th>
+            <th>
+                <h5>
+                    <span class="badge badge-dark">帳號</span>
+                </h5>
+            </th>
+            <th>
+
+                <h5>
+                    <span class="badge badge-warning">發文時間</span>
+
+                </h5>
+            </th>
+            <th>
+                <h5>
+                    <span class="badge badge-success">標題</span>
+                </h5>
+            </th>
+
+
+            <th>
+                <h5>
+                    <span class="badge badge-success">內容</span>
+                </h5>
+            </th>
+            <th>
+                <h5>
+                    <span class="badge badge-info">地點</span>
+                </h5>
+            </th>
+            <th>
+                <h5>
+                    <span class="badge badge-primary">貼文附圖</span>
+                </h5>
+            </th>
+            <th></th>
+
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Theme.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account)
+                </td>
+                <td>
+                    <span class="d-inline-block text-truncate" style="max-width: 100px;">
+                        @Html.DisplayFor(modelItem => item.Publishtime)
+                    </span>
+                </td>
+                <td>
+                    <span class="d-inline-block text-truncate" style="max-width: 150px;">
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </span>
+                </td>
+                <td>
+                    <span class="d-inline-block text-truncate" style="max-width: 150px;">
+                        @Html.DisplayFor(modelItem => item.Content)
+                    </span>
+                </td>
+                <td>
+                    <span class="d-inline-block text-truncate" style="max-width: 150px;">
+                        @Html.DisplayFor(modelItem => item.location)
+                    </span>
+                </td>
+                <td>
+
+                    <div>
+                        @{
+
+
+                            if (item.PostPhoto01 != null || item.PostPhoto02 != null || item.PostPhoto03 != null)
+                            {
+                                <span class="badge badge-primary">有附圖!</span>
+
+
+                            }
+                            else
+                            {
+                                <span class="badge badge-danger">沒有附圖!</span>
+
+
+                            };
+
+
+                        }
+
+
+
+
+
+                    </div>
+
+                </td>
+
+
+
+                <td>
+
+                    @Html.ActionLink("管理", "Details", new { id = item.PostID }) |
+                    @Html.ActionLink("刪除", "Delete", new { id = item.PostID }, new { onclick = "return confirm('確定刪除嗎?!')" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+@*{@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
+@*@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = ViewBag.searchString }))*@
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.CurrentFilter }))
+<script>
+
+
+    $('.pagination-container>ul').removeClass().addClass("pagination justify-content-end");
+    $('.pagination-container>ul>li').removeClass().addClass("page-item");
+    $('.pagination-container a').removeClass().addClass("page-link  bg-dark text-white");
+
+</script>

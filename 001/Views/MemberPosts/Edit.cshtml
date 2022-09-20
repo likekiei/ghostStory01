@@ -1,0 +1,247 @@
+﻿@model GhostStory.Models.Post
+
+@{
+    ViewBag.Title = "台灣詭事-會員編輯貼文";
+    Layout = "~/Views/Shared/_Layout_Member.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "MemberPosts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+@Html.AntiForgeryToken()
+<div class="container rounded" style="background-color:rgb(255, 255, 255,0.5)">
+
+    <div class="form-horizontal">
+        <h4>會員編輯貼文</h4>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.PostID)
+        @Html.HiddenFor(model => model.PostPhoto01)
+        @Html.HiddenFor(model => model.PostPhoto02)
+        @Html.HiddenFor(model => model.PostPhoto03)
+
+        <h6>
+            <span class="badge badge-dark"> 此文章上傳日期</span>
+        </h6>
+        <input id="Publishtime" name="Publishtime" type="datetime" value="@Model.Publishtime" readonly="readonly" class="col-12 text-center rounded" />
+
+        <h6>
+            <span class="badge badge-dark"> 帳號</span>
+        </h6>
+        <input id="Account" name="Account" type="text" value="@Model.Account" readonly="readonly" class="col-12 text-center  rounded" />
+        @*<div class="form-group">
+        @Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+        </div>*@
+
+
+        <div class="form-group ">
+            <h6>
+                <span class="badge badge-info">選擇主題區塊</span>
+            </h6>
+            <div class="col-md-12">
+                @Html.DropDownList("themesID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.themesID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Publishtime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Publishtime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Publishtime, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <h6>
+                <span class="badge badge-info">文章標題</span>
+            </h6>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h6>
+                <span class="badge badge-info">撰寫內容</span>
+            </h6>
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.Content, new { @class = "form-control", rows = "7" })
+                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h6>
+                <span class="badge badge-danger">故事地點</span>
+            </h6>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.location, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.location, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <h6>
+            <span class="badge badge-dark">文章原有圖片</span>
+        </h6>
+
+        <div class="row-cols-md-4 text-lg-center">
+
+
+            @{
+                var photo01 = Model.PostPhoto01 == null ? "Not_Photo_01.png" : Model.PostPhoto01;
+                var photo02 = Model.PostPhoto02 == null ? "Not_Photo_02.png" : Model.PostPhoto02;
+                var photo03 = Model.PostPhoto03 == null ? "Not_Photo_03.png" : Model.PostPhoto03;
+            }
+            <img src="~/images/Postphoto/@photo01" class="img-fluid border-0 " style="inline-size:contain; background-color:rgb(255, 255, 255,0)" />
+            <img src="~/images/Postphoto/@photo02" class="img-fluid border-0 " style="inline-size: contain; background-color: rgb(255, 255, 255,0) " />
+            <img src="~/images/Postphoto/@photo03" class="img-fluid border-0 " style="inline-size: contain; background-color: rgb(255, 255, 255,0) " />
+        </div>
+
+        <h6>
+            <span class="badge badge-warning">文章新圖片預視</span>
+        </h6>
+        <div class="row-cols-md-4   text-xl-center ">
+            <img width="200"  id="newPhoto01" class="h-auto">
+            <img width="200"  id="newPhoto02" class="h-auto">
+            <img width="200"  id="newPhoto03" class="h-auto">
+        </div>
+
+
+        <div class="text-center">
+            <div class="form-group ">
+                @Html.LabelFor(model => model.PostPhoto01, htmlAttributes: new { @class = "control-label col-md-2 text-white" })
+                <div class="col-md-12">
+                    @*@Html.EditorFor(model => model.PostPhoto01, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.TextBoxFor(Model => Model.PostPhoto01, new {Type= "file" ,@class= "form-control" ,name="Photo"})*@
+
+                    <input id="photo01" type="file" class="form-control" name="photo01" />
+
+
+                    @Html.ValidationMessageFor(model => model.PostPhoto01, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group ">
+                @Html.LabelFor(model => model.PostPhoto02, htmlAttributes: new { @class = "control-label col-md-2 text-white" })
+                <div class="col-md-12">
+                    @*@Html.EditorFor(model => model.PostPhoto02, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                    <input id="photo02" type="file" class="form-control" name="photo02" />
+
+                    @Html.ValidationMessageFor(model => model.PostPhoto02, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group ">
+                @Html.LabelFor(model => model.PostPhoto03, htmlAttributes: new { @class = "control-label col-md-2 text-white" })
+                <div class="col-md-12">
+                    @*@Html.EditorFor(model => model.PostPhoto03, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input id="photo03" type="file" class="form-control" name="photo03" />
+
+                    @Html.ValidationMessageFor(model => model.PostPhoto03, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            @*<div class="form-group">
+            <h6>
+                <span class="badge badge-warning">有圖為證NO.1</span>
+            </h6>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.PostPhoto01, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PostPhoto01, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+            @*<div class="form-group">
+            <h6>
+                <span class="badge badge-warning">有圖為證NO.2</span>
+            </h6>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.PostPhoto02, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PostPhoto02, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h6>
+                <span class="badge badge-warning">有圖為證NO.3</span>
+            </h6>
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.PostPhoto03, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PostPhoto03, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-6 col-md-12">
+                <input type="submit" value="確定儲存" class="btn btn-outline-dark" />
+
+
+                <div class="btn btn-outline-danger "> @Html.ActionLink("取消編輯", "Index", null, new { @class = "text-white" })</div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+
+
+    $("#photo01").change(() => {
+        var oFReader = new FileReader();
+        var file = document.getElementById('photo01').files[0];
+        oFReader.readAsDataURL(file);
+        oFReader.onloadend = function (oFRevent) {
+            var src = oFRevent.target.result;
+            $('#newPhoto01').attr('src', src);
+
+        }
+
+    });
+
+    $("#photo02").change(() => {
+        var oFReader = new FileReader();
+        var file = document.getElementById('photo02').files[0];
+        oFReader.readAsDataURL(file);
+        oFReader.onloadend = function (oFRevent) {
+            var src = oFRevent.target.result;
+            $('#newPhoto02').attr('src', src);
+
+        }
+
+    });
+
+    $("#photo03").change(() => {
+        var oFReader = new FileReader();
+        var file = document.getElementById('photo03').files[0];
+        oFReader.readAsDataURL(file);
+        oFReader.onloadend = function (oFRevent) {
+            var src = oFRevent.target.result;
+            $('#newPhoto03').attr('src', src);
+
+        }
+
+    });
+
+
+
+</script>

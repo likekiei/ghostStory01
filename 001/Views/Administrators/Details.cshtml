@@ -1,0 +1,27 @@
+﻿@model GhostStory.Models.Administrators
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Manager.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Administrators</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Passwd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passwd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Account }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
